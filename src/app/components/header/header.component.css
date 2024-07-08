@@ -1,0 +1,39 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.header-mat-toolbar {
+  background-color: #043d27;
+  color: white;
+}
+
+.header-menu {
+  margin: 0;
+  padding: 0;
+}
+
+.header-menu li {
+  display: inline-block;
+  margin-right: 20px;
+  font-size: 16px;
+}
+
+.header-menu li:last-child {
+  margin-right: 0;
+}
+
+.header-menu li a {
+  text-decoration: none;
+  color: white;
+  font-weight: normal;
+}
+
+.header-menu li a:hover {
+  color: orange;
+  transition: color 0.3s;
+}
+
+
+
+
+

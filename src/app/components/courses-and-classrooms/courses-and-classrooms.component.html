@@ -1,0 +1,178 @@
+<body>
+<div class="container">
+  <div class="box">
+    <h2>Courses</h2>
+    <div class="submenu">
+      <ul>
+        <li class="button-li" (click)="toggleAddNewCourseMenu()">Add New Course</li>
+        <li class="button-li" (click)="toggleManipulateCourseMenu()">Update the Course Information</li>
+        <li class="button-li" (click)="toggleDisplayCoursesMenu()">Display Courses</li>
+      </ul>
+      <div id="subAddNewCourseMenu" *ngIf="addNewCourseMenuVisible">
+        <form #newCourseForm="ngForm">
+          <!-- Add New Course form content -->
+          <label for="newCourseCode">Code of the course:</label>
+          <input type="text" id="newCourseCode" name="newCourseCode" required [(ngModel)]="newCourseCode"><br><br>
+
+          <label for="newCourseName">Name of the course:</label>
+          <input type="text" id="newCourseName" name="newCourseName" required [(ngModel)]="newCourseName"><br><br>
+
+          <label for="newCourseYear">The year of the semester:</label>
+          <select id="newCourseYear" name="newCourseYear" required [(ngModel)]="newCourseYear">
+            <option *ngFor="let year of [1, 2, 3, 4]" [value]="year">{{ year }}</option>
+          </select><br><br>
+
+          <label for="newCourseCredit">Credit:</label>
+          <input type="text" id="newCourseCredit" name="newCourseCredit" required [(ngModel)]="newCourseCredit"><br><br>
+
+          <label for="newCourse_c_or_e">Compulsory(C) or Elective(E):</label>
+          <select id="newCourse_c_or_e" name="newCourse_c_or_e" required [(ngModel)]="newCourse_c_or_e">
+            <option value="C">C</option>
+            <option value="E">E</option>
+          </select><br><br>
+
+          <label for="newCourse_d_or_s">Department(D) or Service(S):</label>
+          <select id="newCourse_d_or_s" name="newCourse_d_or_s" required [(ngModel)]="newCourse_d_or_s">
+            <option value="D">D</option>
+            <option value="S">S</option>
+          </select><br><br>
+
+          <label for="newCourseNumberOfStudents">Number of students:</label>
+          <input type="text" id="newCourseNumberOfStudents" name="newCourseNumberOfStudents" required
+                 [(ngModel)]="newCourseNumberOfStudents"><br><br>
+
+          <label for="newCourseInstructorName">Name of the instructor:</label>
+          <input type="text" id="newCourseInstructorName" name="newCourseInstructorName" required
+                 [(ngModel)]="newCourseInstructorName"><br><br>
+
+          <label for="newCourseHoursPreference">Hours Preference:</label>
+          <select id="newCourseHoursPreference" name="newCourseHoursPreference" required
+                  [(ngModel)]="newCourseHoursPreference">
+            <option value="3">3</option>
+            <option value="2+1">2+1</option>
+          </select><br><br>
+
+          <button type="button" (click)="addNewCourse(newCourseForm)">Add to the Schedule</button>
+          <input type="reset" value="Reset" style="margin-left: 20px; margin-bottom: 40px;">
+        </form>
+      </div>
+      <div id="subManipulateCourseMenu" *ngIf="manipulateCourseMenuVisible">
+        <!-- Update the Course Information form content -->
+        <form #subManipulateCourseForm="ngForm">
+
+          <label for="manipulatedCourseCode">Choose the course you want to update: </label>
+          <select id="manipulatedCourseCode" name="manipulatedCourseCode" required [(ngModel)]="manipulatedCourseCode">
+            <option *ngFor="let course of this.service.courses">{{ course.code }}</option>
+          </select><br><br>
+
+          <label for="newManipulatedCourseYear">Year of the semester: </label>
+          <select id="newManipulatedCourseYear" name="newManipulatedCourseYear" required
+                  [(ngModel)]="newManipulatedCourseYear">
+            <option *ngFor="let year of [1,2,3,4]" [value]="year">{{ year }}</option>
+          </select><br><br>
+
+          <label for="newManipulatedCourseNumberOfStudents">Number of students: </label>
+          <input type="text" id="newManipulatedCourseNumberOfStudents" name="newManipulatedCourseNumberOfStudents"
+                 required [(ngModel)]="newManipulatedCourseNumberOfStudents"><br><br>
+
+          <label for="newManipulatedCourseHoursPreference">Hours preference: </label>
+          <select id="newManipulatedCourseHoursPreference" name="newManipulatedCourseHoursPreference" required
+                  [(ngModel)]="newManipulatedCourseHoursPreference">
+            <option value="3">3</option>
+            <option value="2+1">2+1</option>
+          </select><br><br>
+
+          <button type="button" (click)="updateExistingCourse(subManipulateCourseForm)">Update</button>
+          <input type="reset" value="Reset" style="margin-left: 20px; margin-bottom: 40px;">
+        </form>
+      </div>
+    </div>
+    <div id="subDisplayCoursesMenu" *ngIf="displayCoursesMenuVisible">
+      <table>
+        <thead>
+        <tr>
+          <th>Course Code</th>
+          <th>Course Name</th>
+          <th>Year</th>
+          <th>Credit</th>
+          <th>Compulsory or Elective</th>
+          <th>Department or Service</th>
+          <th>Number of Students</th>
+          <th>Instructor</th>
+          <th>Hours Preference</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let course of this.service.courses">
+          <td>{{ course.code }}</td>
+          <td>{{ course.name }}</td>
+          <td style="text-align: center;">{{ course.year }}</td>
+          <td style="text-align: center;">{{ course.credit }}</td>
+          <td style="text-align: center;">{{ course.compulsoryOrElective }}</td>
+          <td style="text-align: center;">{{ course.departmentOrService }}</td>
+          <td style="text-align: center;">{{ course.numberOfStudents }}</td>
+          <td>{{ course.instructor.name }}</td>
+          <td style="text-align: center;">{{ course.hoursPreference }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="box">
+  <h2>Classrooms</h2>
+  <div class="submenu">
+    <ul>
+      <li class="button-li" (click)="toggleAddClassroomMenu()">Add New Classroom</li>
+      <li class="button-li" (click)="toggleManipulateClassroomMenu()">Update the Classroom Information</li>
+      <li class="button-li" (click)="toggleDisplayClassroomsMenu()">Display Classrooms</li>
+    </ul>
+    <div id="subAddClassroomMenu" *ngIf="addClassroomMenuVisible">
+      <form #newClassroomForm="ngForm">
+        <!-- Add New Classroom form content -->
+        <label for="newClassroomId">ID:</label>
+        <input type="text" id="newClassroomId" name="newClassroomId" required [(ngModel)]="newClassroomId"><br><br>
+        <label for="newClassroomCapacity">Capacity:</label>
+        <input type="text" id="newClassroomCapacity" name="newClassroomCapacity" required
+               [(ngModel)]="newClassroomCapacity"><br><br>
+        <button type="button" (click)="addNewClassroom(newClassroomForm)">Add</button>
+        <input type="reset" value="Reset" style="margin-left: 20px; margin-bottom: 40px;">
+      </form>
+    </div>
+    <div id="subManipulateClassroomMenu" *ngIf="manipulateClassroomMenuVisible">
+      <!-- Update the Classroom Information form content -->
+      <form #subManipulateClassroomForm="ngForm">
+        <label for="manipulatedClassroomId">Choose the classroom you want to update: </label>
+        <select id="manipulatedClassroomId" name="manipulatedClassroomId" required
+                [(ngModel)]="manipulatedClassroomId">
+          <option *ngFor="let classroom of this.service.classrooms">{{ classroom.id }}
+          </option>
+        </select><br><br>
+
+        <label for="newManipulatedClassroomCapacity">Capacity: </label>
+        <input type="text" id="newManipulatedClassroomCapacity" name="newManipulatedClassroomCapacity"
+               required [(ngModel)]="newManipulatedClassroomCapacity"><br><br>
+
+        <button type="button" (click)="updateExistingClassroom(subManipulateClassroomForm)">Update</button>
+        <input type="reset" value="Reset" style="margin-left: 20px; margin-bottom: 40px;">
+      </form>
+    </div>
+    <div id="subDisplayClassroomsMenu" *ngIf="displayClassroomsMenuVisible">
+      <table>
+        <thead>
+        <tr>
+          <th>Classroom ID:</th>
+          <th>Classroom Capacity:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let classroom of this.service.classrooms">
+          <td>{{ classroom.id }}</td>
+          <td>{{ classroom.capacity }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>

@@ -1,0 +1,47 @@
+/*Buton stilleri*/
+
+.button-container {
+  display: flex;
+  justify-content: center; /* Butonları yatay olarak ortala */
+  gap: 500px; /* Butonlar arasına boşluk eklemek için */
+  margin-top: 20px; /* Üstten boşluk */
+}
+
+button {
+  display: inline-block;
+  background-color: #f4f4f4;
+  color: #333;
+  padding: 10px 20px;
+  border: 2px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #4d80bc;
+}
+
+/* Tablo stilleri */
+table {
+  border-collapse: collapse;
+  width: 75%;
+  margin: 20px auto 20px; /* Tablonun üstünde ve altında 20px boşluk bırakır */
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+}
+
+/* Çift satırların arka plan rengi */
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Tek satırların arka plan rengi */
+tr:nth-child(odd) {
+  background-color: #ffffff;
+}

@@ -1,0 +1,23 @@
+<form class="upload-container">
+
+  <div class="input-box">
+    <h2>Choose courses.csv from your computer:</h2>
+    <input type="file" id="coursesFile" class="upload-input" accept=".csv"> <br>
+
+    <h2>Choose service.csv from your computer:</h2>
+    <input type="file" id="serviceFile" class="upload-input" accept=".csv"> <br>
+
+    <h2>Choose busy.csv from your computer:</h2>
+    <input type="file" id="busyFile" class="upload-input" accept=".csv"> <br>
+
+    <h2>Choose classroom.csv from your computer:</h2>
+    <input type="file" id="classroomFile" class="upload-input" accept=".csv"> <br><br>
+  </div>
+
+  <div class="button-box">
+    <button type="button" (click)="readAllFiles();">Upload the Files</button>
+    <button type="button" (click)="processDatas()">Process the Files</button>
+    <input type="reset" class="reset-input" value="Clear File Selection">
+  </div>
+
+</form>

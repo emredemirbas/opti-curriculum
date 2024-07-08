@@ -1,0 +1,27 @@
+<div class="button-container">
+  <button type="button" (click)="this.service.schedule.abortSchedule();this.service.assignAllCourses()">Create the Schedule</button>
+  <button type="button" (click)="service.schedule.abortSchedule()">Reset the Schedule</button>
+</div>
+
+<table border="1">
+  <tr>
+    <th>Days</th>
+    <th>Hours</th>
+    <th *ngFor="let year of ['First', 'Second', 'Third', 'Fourth']">{{ year }} Year</th>
+  </tr>
+  <tr *ngFor="let day of service.weekDays">
+    <td>{{ day }}</td>
+    <td>
+      <ng-container *ngFor="let hour of service.hoursInSchedule">
+        {{ hour }}<br>
+      </ng-container>
+    </td>
+    <td *ngFor="let year of years">
+      <div *ngFor="let hour of service.hoursInSchedule">
+        {{ service.schedule.subSchedules[service.yearToIndex(year)].arr[service.dayToIndex(day)][service.hourToIndex(hour)].courseCode }}
+        -{{ service.schedule.subSchedules[service.yearToIndex(year)].arr[service.dayToIndex(day)][service.hourToIndex(hour)].classroomName }}
+        <br>
+      </div>
+    </td>
+  </tr>
+</table>

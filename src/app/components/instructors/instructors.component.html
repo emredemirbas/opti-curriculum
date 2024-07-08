@@ -1,0 +1,73 @@
+<body>
+<div class="container">
+  <div class="box">
+    <h2>Instructors</h2>
+    <div class="submenu">
+      <ul>
+        <li class="button-li" (click)="toggleAddBusyHoursMenu()">Add Busy Hours</li>
+        <li class="button-li" (click)="toggleRemoveBusyHoursMenu()">Remove Busy Hours</li>
+        <li class="button-li" (click)="toggleDisplayInstructorsMenu()">Display Instructors</li>
+      </ul>
+      <div id="subAddBusyHoursMenu" *ngIf="addBusyHoursMenuVisible">
+        <form #selectInstructorDropDownAdd="ngForm">
+          <label for="chosenInstructorNameForAdd">Instructor: </label>
+          <select id="chosenInstructorNameForAdd" name="chosenInstructorNameForAdd" required
+                  [(ngModel)]="chosenInstructorNameForAdd">
+            <option *ngFor="let instructor of this.service.instructors">{{ instructor.name }}</option>
+          </select><br><br>
+
+          <label for="chosenDayForAdd">Day: </label>
+          <select id="chosenDayForAdd" name="chosenDayForAdd" required [(ngModel)]="chosenDayForAdd">
+            <option *ngFor="let day of this.service.weekDays">{{ day }}</option>
+          </select><br><br>
+
+          <label for="chosenHourForAdd">Hour: </label>
+          <select id="chosenHourForAdd" name="chosenHourForAdd" required [(ngModel)]="chosenHourForAdd">
+            <option *ngFor="let hour of this.service.hoursInSchedule">{{ hour }}</option>
+          </select><br><br>
+
+          <button type="button" (click)="addBusyHour(selectInstructorDropDownAdd)">Add</button>
+          <input type="reset" value="Reset" style="margin-left: 20px; margin-bottom: 40px;">
+
+        </form>
+      </div>
+      <div id="subRemoveBusyHoursMenu" *ngIf="removeBusyHoursMenuVisible">
+        <form #selectInstructorDropDownAdd="ngForm">
+          <label for="chosenInstructorNameForRemove">Instructor: </label>
+          <select id="chosenInstructorNameForRemove" name="chosenInstructorNameForRemove" required
+                  [(ngModel)]="chosenInstructorNameForRemove">
+            <option *ngFor="let instructor of this.service.instructors">{{ instructor.name }}</option>
+          </select><br><br>
+
+          <label for="chosenDayForRemove">Day: </label>
+          <select id="chosenDayForRemove" name="chosenDayForRemove" required [(ngModel)]="chosenDayForRemove">
+            <option *ngFor="let day of this.service.weekDays">{{ day }}</option>
+          </select><br><br>
+
+          <label for="chosenHourForRemove">Hour: </label>
+          <select id="chosenHourForRemove" name="chosenHourForRemove" required [(ngModel)]="chosenHourForRemove">
+            <option *ngFor="let hour of this.service.hoursInSchedule">{{ hour }}</option>
+          </select><br><br>
+
+          <button type="button" (click)="removeBusyHour(selectInstructorDropDownAdd)">Remove</button>
+          <input type="reset" value="Reset" style="margin-left: 20px; margin-bottom: 40px;">
+        </form>
+      </div>
+      <div id="subdisplayInstructorMenu" *ngIf="displayInstructorsMenuVisible">
+        <table>
+          <thead>
+          <tr>
+            <th style="text-align: center;">Instructor Name:</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let instructor of this.service.instructors">
+            <td style="text-align: center;">{{instructor.name}}</td>
+          </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
+</div>
+</body>

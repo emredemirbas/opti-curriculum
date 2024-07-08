@@ -1,0 +1,20 @@
+table {
+    margin-left: 400px;
+    margin-top: 160px;
+    width: 50%;
+    border-collapse: collapse;
+    border-style: solid;
+  }
+  
+  th, td {
+    border: 3px solid black;
+    padding: 10px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-weight: 500;
+  }
+  
+  th {
+    background-color:slategray;
+    color: white;
+  }
