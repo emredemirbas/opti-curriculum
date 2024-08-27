@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "AutomaticCourseScheduler": {
+    "OptiCurriculum": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/automatic-course-scheduler",
+            "outputPath": "dist/opti-curriculum",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -68,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "AutomaticCourseScheduler:build:production"
+              "buildTarget": "OptiCurriculum:build:production"
             },
             "development": {
-              "buildTarget": "AutomaticCourseScheduler:build:development"
+              "buildTarget": "OptiCurriculum:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "AutomaticCourseScheduler:build"
+            "buildTarget": "OptiCurriculum:build"
           }
         },
         "test": {
