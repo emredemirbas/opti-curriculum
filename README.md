@@ -1,6 +1,6 @@
 # OptiCurriculum
 
-OptiCurriculum is an Angular-based automatic course planner application for department curriculums. This app efficiently schedules courses by assigning classrooms and time slots, avoiding overlaps within the same academic year. It considers classroom capacities and busy hours for instructors, scheduling courses within 8 available time slots per weekday (8:30 to 16:30).
+OptiCurriculum is an Angular-based automatic course planner application for department curriculums. This app efficiently schedules courses by assigning classrooms and time slots, avoiding overlaps within the same academic year. It considers classroom capacities and busy hours for instructors, scheduling courses within 9 available time slots per weekday (8:30 to 16:30).
 
 **Features:**
 - Automatic assignment of classrooms and time slots
