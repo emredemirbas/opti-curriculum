@@ -6,7 +6,7 @@ OptiCurriculum is an Angular-based automatic course planner application for depa
 - Automatic assignment of classrooms and time slots
 - Conflict-free scheduling within the academic year
 - Considers classroom capacities and busy hours for instructors
-- Operates within 8 time slots per weekday
+- Operates within 9 time slots per each weekday
 
 **CSV Files:**
 Required CSV files are located in the `csv_files` folder in this repository.
